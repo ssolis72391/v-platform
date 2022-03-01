@@ -1,0 +1,54 @@
+query ListProjects {
+  projects(order_by: { updated_at: desc }) {
+    id
+    title
+    type
+    owner {
+      id
+      first_name
+      last_name
+      avatar
+    }
+    organization {
+      id
+      name
+    }
+    created_at
+    updated_at
+    deleted_at
+  }
+}
+
+query GetProject($id: uuid!) {
+  projects_by_pk(id: $id) {
+    id
+    title
+    takeoff_file
+    organization {
+      id
+      name
+    }
+  }
+}
+
+mutation InsertProject($project: projects_insert_input!) {
+  insert_projects_one(object: $project) {
+    id
+    title
+  }
+}
+
+mutation UpdateProject($pk: projects_pk_columns_input!, $project: projects_set_input!) {
+  update_projects_by_pk(pk_columns: $pk, _set: $project) {
+    id
+    title
+    updated_at
+  }
+}
+
+mutation SoftDeleteProject($pk: projects_pk_columns_input!) {
+  update_projects_by_pk(pk_columns: $pk, _set: { deleted_at: "now()" }) {
+    id
+    deleted_at
+  }
+}

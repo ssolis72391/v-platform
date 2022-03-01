@@ -1,0 +1,40 @@
+query GetAuthUserData($id: uuid!, $domain: String!) {
+  users_by_pk(id: $id) {
+    id
+    first_name
+    last_name
+    email
+    auth_id
+    last_seen
+    avatar
+    organization_id
+    organization {
+      id
+      name
+    }
+    created_at
+  }
+  versions(limit: 1, where: { domain: { _eq: $domain } }, order_by: { created_at: desc }) {
+    id
+    project
+    version
+    stable
+    domain
+    model
+    updated_at
+    created_at
+  }
+}
+
+mutation vhLastSeen($data: json!) {
+  insert_vh_last_seen_one(
+    object: { data: $data }
+    on_conflict: { constraint: vh_last_seen_user_id_key, update_columns: data }
+  ) {
+    id
+    user_id
+    data
+    created_at
+    updated_at
+  }
+}

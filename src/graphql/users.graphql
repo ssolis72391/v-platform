@@ -1,0 +1,26 @@
+query ListUsers {
+  users {
+    id
+    first_name
+    last_name
+    email
+    avatar
+  }
+}
+
+query GetUser($id: uuid!) {
+  users_by_pk(id: $id) {
+    id
+    first_name
+    last_name
+    email
+    avatar
+  }
+}
+
+mutation UpdateUser($pk: users_pk_columns_input!, $user: users_set_input!) {
+  update_users_by_pk(pk_columns: $pk, _set: $user) {
+    id
+    updated_at
+  }
+}

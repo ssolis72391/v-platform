@@ -1,0 +1,117 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  // background-color: #f2f4f7;
+  // height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.pwclient {
+  overflow: hidden;
+  color: #fff;
+
+  video {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.minimal-scroll {
+  overflow-y: scroll;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  scrollbar-width: thin;
+}
+
+.minimal-scroll::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.minimal-scroll::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+.minimal-scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+canvas.pdf {
+  width: 100%;
+}
+
+img.pdf {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  &.selected {
+    box-shadow: 0 0 0 3px #2b83e9;
+  }
+}
+
+.pdf-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.pdf-thumbnail {
+  border: 1px solid #666;
+  width: calc(33% - 20px);
+  background-color: #fff;
+  position: relative;
+  margin: 10px;
+  display: flex;
+  cursor: pointer;
+
+  &:hover {
+    // outline: 5px solid blue;
+    box-shadow: 0px 0px 10px 2px #1565c031;
+  }
+
+  // &[data-loading='false'] {
+  // 	&:before {
+  // 		content: '';
+  // 	}
+  // }
+
+  // &[data-loading='true'] {
+  // 	&:before {
+  // 		content: 'Loading';
+  // 		background-color: #000;
+  // 		opacity: 0.5;
+  // 		position: absolute;
+  // 		top: 0;
+  // 		bottom: 0;
+  // 		left: 0;
+  // 		right: 0;
+  // 	}
+  // }
+}
+
+.MuiModal-root {
+  z-index: 9100 !important;
+}
